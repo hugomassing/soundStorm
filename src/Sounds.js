@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
+import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow} from 'material-ui/Table';
+
+import Sound from './Sound.js';
 
 class Sounds extends Component {
   render() {
@@ -8,13 +10,16 @@ class Sounds extends Component {
         <Table >
           <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
             <TableRow>
+              <TableHeaderColumn>Artist</TableHeaderColumn>
               <TableHeaderColumn>Track</TableHeaderColumn>
               <TableHeaderColumn>Download</TableHeaderColumn>
               <TableHeaderColumn>Search</TableHeaderColumn>
             </TableRow>
           </TableHeader>
           <TableBody>
-
+            {
+              this.props.tracks.map(track => <Sound sound={track}/>)
+            }
           </TableBody>
         </Table>
       </div>

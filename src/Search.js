@@ -9,7 +9,7 @@ class Search extends Component {
     input: ''
   }
   handleClick = () => {
-    fetch(`http://api.soundcloud.com/users/${this.state.input}/favorites.json?client_id=${SC_CLIENT_ID}&limit=10&offset=0`)
+    fetch(`http://api.soundcloud.com/users/${this.state.input}/favorites.json?client_id=${SC_CLIENT_ID}&limit=40&offset=0`)
       .then(response => {
         return response.json();
       })
