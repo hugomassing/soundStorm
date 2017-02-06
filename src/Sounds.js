@@ -13,7 +13,7 @@ class Sounds extends Component {
               <TableHeaderColumn>Artist</TableHeaderColumn>
               <TableHeaderColumn>Track</TableHeaderColumn>
               <TableHeaderColumn>Download</TableHeaderColumn>
-              <TableHeaderColumn>Search</TableHeaderColumn>
+              <TableHeaderColumn style={{width: '70px'}}>Search</TableHeaderColumn>
             </TableRow>
           </TableHeader>
           <TableBody>

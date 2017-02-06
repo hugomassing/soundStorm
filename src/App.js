@@ -11,7 +11,7 @@ import 'flexboxgrid/css/flexboxgrid.min.css'
 
 injectTapEventPlugin();
 
-const SC_CLIENT_ID = '25a6312cd0379dbf2b4d8fce66d4f112';
+export const SC_CLIENT_ID = '25a6312cd0379dbf2b4d8fce66d4f112';
 
 class App extends Component {
   state = {
