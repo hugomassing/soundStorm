@@ -10,7 +10,7 @@ class Sound extends Component {
   render() {
     return (
       <TableRow>
-        <TableRowColumn>
+        <TableRowColumn style={{width: '200px'}}>
           <a href={this.props.sound.user.permalink_url}>{this.props.sound.user.username}</a>
         </TableRowColumn>
         <TableRowColumn>

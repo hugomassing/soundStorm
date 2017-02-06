@@ -10,7 +10,7 @@ class Sounds extends Component {
         <Table >
           <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
             <TableRow>
-              <TableHeaderColumn>Artist</TableHeaderColumn>
+              <TableHeaderColumn style={{width: '200px'}}>Artist</TableHeaderColumn>
               <TableHeaderColumn>Track</TableHeaderColumn>
               <TableHeaderColumn>Download</TableHeaderColumn>
               <TableHeaderColumn style={{width: '70px'}}>Search</TableHeaderColumn>
