@@ -10,6 +10,7 @@ class Sounds extends Component {
         <Table >
           <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
             <TableRow>
+              <TableHeaderColumn style={{width: '20px'}}></TableHeaderColumn>
               <TableHeaderColumn style={{width: '200px'}}>Artist</TableHeaderColumn>
               <TableHeaderColumn>Track</TableHeaderColumn>
               <TableHeaderColumn>Download</TableHeaderColumn>
@@ -18,7 +19,7 @@ class Sounds extends Component {
           </TableHeader>
           <TableBody>
             {
-              this.props.tracks.map(track => <Sound sound={track}/>)
+              this.props.tracks.map(track => <Sound key={track.id} sound={track}/>)
             }
           </TableBody>
         </Table>

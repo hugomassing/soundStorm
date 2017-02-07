@@ -1,15 +1,26 @@
 import React, { Component } from 'react';
 import {TableRow, TableRowColumn} from 'material-ui/Table';
 //import FontIcon from 'material-ui/FontIcon';
+import randomColor from 'randomcolor';
+import md5 from 'blueimp-md5';
 
 import {SC_CLIENT_ID} from './App.js';
 
 
 class Sound extends Component {
 
+  /*state = {
+    rowColor : randomColor({
+      seed : this.props.sound.userLiked
+    })
+  }*/
+
   render() {
     return (
       <TableRow>
+        <TableRowColumn style={{width: '20px'}}>
+          <div style={{ width: '10px', height: '10px', borderRadius: '5px', backgroundColor : randomColor({seed : md5(this.props.sound.userLiked)})}}></div>
+        </TableRowColumn>
         <TableRowColumn style={{width: '200px'}}>
           <a href={this.props.sound.user.permalink_url}>{this.props.sound.user.username}</a>
         </TableRowColumn>

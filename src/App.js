@@ -19,16 +19,22 @@ class App extends Component {
     input: ''
   }
   handleClick = () => {
-    fetch(`http://api.soundcloud.com/users/${this.state.input}/favorites.json?client_id=${SC_CLIENT_ID}&limit=200&offset=0`)
-      .then(response => {
-        return response.json();
-      })
-      .then((tracks) => {
-        console.log(tracks);
-        this.setState({
-          tracks: tracks,
+    const users = this.state.input.split(',');
+    users.forEach(user => {
+      fetch(`http://api.soundcloud.com/users/${user}/favorites.json?client_id=${SC_CLIENT_ID}&limit=5&offset=0`)
+        .then(response => {
+          return response.json();
+        })
+        .then((tracks) => {
+          console.log(tracks);
+          tracks.forEach(track => {
+            track.userLiked = user;
+          });
+          this.setState({
+            tracks: this.state.tracks.concat(tracks),
+          });
         });
-      });
+    });
   }
   handleChange = (e) => {
     this.setState({ input: e.target.value });
