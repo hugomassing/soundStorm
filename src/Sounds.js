@@ -17,7 +17,7 @@ class Sounds extends Component {
               <TableHeaderColumn style={{width: '70px'}}>Search</TableHeaderColumn>
             </TableRow>
           </TableHeader>
-          <TableBody>
+          <TableBody showRowHover={true}>
             {
               this.props.tracks.map(track => <Sound key={track.id} sound={track}/>)
             }
