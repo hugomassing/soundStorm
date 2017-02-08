@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import randomColor from 'randomcolor';
-import md5 from 'blueimp-md5';
+import moment from 'moment';
 
 class DottedColor extends Component {
   state = {
@@ -9,8 +9,17 @@ class DottedColor extends Component {
       width: '10px',
       height: '10px',
       borderRadius: '5px',
-      backgroundColor : randomColor({seed : md5(this.props.user)})
+      backgroundColor : randomColor({seed : this.sumLetter(this.props.user) * moment().hour()})
     }
+  }
+
+  sumLetter(string) {
+    let total = 0;
+    for (let i = 0; i !== string.length; i++) {
+      if (total >= Number.MAX_SAFE_INTEGER) break;
+      total += string.charCodeAt(0);
+    }
+    return total;
   }
 
   render() {
