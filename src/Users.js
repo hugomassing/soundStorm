@@ -6,10 +6,10 @@ class Users extends Component {
   render () {
     return (
       <div className="box">
-        <div className="row" style={{paddingLeft: '50px'}}>
+        <div className="row around-xs" style={{paddingLeft: '50px'}}>
           {
             this.props.users.map(user =>
-              <div key={user.toString()} className="col-xs" style={{margin : '9px', position: 'relative'}}>
+              <div key={user.toString()} className="col-md" style={{margin : '9px', position: 'relative'}}>
               <div  style={{ position: 'absolute', top: '4px', left: '0px' }}>
                 <DottedColor user={user} />
               </div>

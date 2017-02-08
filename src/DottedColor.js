@@ -23,8 +23,15 @@ class DottedColor extends Component {
   }
 
   render() {
+    const style = {
+      width: '10px',
+      height: '10px',
+      borderRadius: '5px',
+      backgroundColor : randomColor({seed : this.sumLetter(this.props.user) * moment().hour()})
+    }
+
     return (
-      <div style={this.state.style}>
+      <div style={style}>
 
       </div>
     )

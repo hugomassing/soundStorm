@@ -20,7 +20,7 @@ class App extends Component {
   }
   handleClick = () => {
     this.setState({
-      users: this.state.input.split(','),
+      users: this.state.input.split(',').map(user => user.trim()),
       tracks: []
     })
   }

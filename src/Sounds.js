@@ -45,14 +45,14 @@ class Sounds extends Component {
             .then(response => response.json())
             .then(tracks => {
               tracks.map(track => track.userLiked = user);
-              this.setState({
-                tracks: this.state.tracks.concat(tracks),
-              })
+              return tracks;
             }
           )
       )
     ).then(tracks => {
+      console.log(tracks)
       this.setState({
+        tracks : this.state.tracks.concat(...tracks),
         loading : false
       });
     });
