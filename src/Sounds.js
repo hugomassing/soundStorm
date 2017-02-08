@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow} from 'material-ui/Table';
 import RaisedButton from 'material-ui/RaisedButton';
+import FontIcon from 'material-ui/FontIcon';
 
 import Sound from './Sound.js';
 
@@ -10,7 +11,8 @@ class Sounds extends Component {
   state = {
     users: [],
     tracks: [],
-    page: 1
+    page: 1,
+    loading : false
   }
 
   componentWillReceiveProps(nextProps) {
@@ -26,27 +28,34 @@ class Sounds extends Component {
     this.setState({
       page: this.state.page + 1
     },() =>{
-      console.log(this.state.page);
       this.loadItems(this.state.users,this.state.page);
     });
   }
 
   loadItems(users, page) {
     const limit = 5;
-    users.forEach(user => {
-      fetch(`http://api.soundcloud.com/users/${user}/favorites.json?client_id=${SC_CLIENT_ID}&limit=${limit}&offset=${page * limit}`)
-        .then(response => {
-          return response.json();
-        })
-        .then((tracks) => {
-          tracks.forEach(track => {
-            track.userLiked = user;
-          });
-          this.setState({
-            tracks: this.state.tracks.concat(tracks),
-          });
-        });
-    })
+    this.setState({
+      loading : true
+    });
+
+    Promise.all(
+      users.map(
+        user =>
+          fetch(`http://api.soundcloud.com/users/${user}/favorites.json?client_id=${SC_CLIENT_ID}&limit=${limit}&offset=${page * limit}`)
+            .then(response => response.json())
+            .then(tracks => {
+              tracks.map(track => track.userLiked = user);
+              this.setState({
+                tracks: this.state.tracks.concat(tracks),
+              })
+            }
+          )
+      )
+    ).then(tracks => {
+      this.setState({
+        loading : false
+      });
+    });
 
   }
 
@@ -73,7 +82,7 @@ class Sounds extends Component {
           (this.state.tracks.length > 0 ?
           <div className="row center-xs" style={{marginTop: '30px'}}>
             <div>
-              <RaisedButton label="Load More" primary={true} onClick={this.handleClick.bind(this)}></RaisedButton>
+              <RaisedButton label={this.state.loading ? <FontIcon className="material-icons" style={{color: 'white', fontSize: '16px'}}>autorenew</FontIcon> : 'Load More'} primary={true} onClick={this.handleClick.bind(this)}></RaisedButton>
             </div>
           </div>
             : null)
