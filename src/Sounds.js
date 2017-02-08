@@ -19,7 +19,7 @@ class Sounds extends Component {
           </TableHeader>
           <TableBody showRowHover={true}>
             {
-              this.props.tracks.map(track => <Sound key={track.id} sound={track}/>)
+              this.props.tracks.map(track => <Sound key={ track.userLiked + '-'+ track.id} sound={track}/>)
             }
           </TableBody>
         </Table>
