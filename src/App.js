@@ -1,9 +1,11 @@
 import React, { PureComponent } from 'react';
 import './App.css';
+
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import {Tabs, Tab} from 'material-ui/Tabs';
+import FontIcon from 'material-ui/FontIcon';
 
 import Header from './Header.js';
 import Sounds from './Sounds.js';
@@ -20,12 +22,13 @@ class App extends PureComponent {
 
   state = {
     users : {},
-    input: 'sicarmy,maazelbeats,diplo'
+    input: ''
   }
 
   loadItems(users) {
-    const limit = 5;
+    const limit = 30;
     this.setState({
+      users: {},
       loading : true
     });
     Promise.all(
@@ -71,9 +74,9 @@ class App extends PureComponent {
           <div style={{margin : '40px 100px'}}>
             <div className="row">
               <input className="col-lg-3" onChange={this.handleChange} value={this.state.input} type="text"/>
-              <RaisedButton label="Get Favorites" primary={true} onClick={this.handleClick}></RaisedButton>
+              <RaisedButton style={{ width : '150px' }} label={this.state.loading ? <FontIcon className="material-icons" style={{color: 'white', fontSize: '16px'}}>autorenew</FontIcon> : 'Get Favorites'} primary={true} onClick={this.handleClick}></RaisedButton>
             </div>
-            <Tabs className="row" style={{ marginTop : '20px'}}>
+            <Tabs className="row" style={(Object.keys(this.state.users).length === 0 && this.state.users.constructor === Object ? { display : 'none'}  : { marginTop : '20px'})}>
               {
                 Object.keys(this.state.users).map(user =>
                   <Tab key={user.toString()} label={user}>
