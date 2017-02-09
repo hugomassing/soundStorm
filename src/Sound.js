@@ -4,8 +4,6 @@ import FontIcon from 'material-ui/FontIcon';
 
 import {SC_CLIENT_ID} from './App.js';
 
-import DottedColor from "./DottedColor.js";
-
 class Sound extends Component {
 
   state = {
@@ -19,9 +17,6 @@ class Sound extends Component {
   render() {
     return (
       <TableRow>
-        <TableRowColumn style={{width: '20px'}}>
-          <DottedColor user={this.props.sound.userLiked}></DottedColor>
-        </TableRowColumn>
         <TableRowColumn style={{width: '200px'}}>
           <a href={this.props.sound.user.permalink_url}>{this.props.sound.user.username}</a>
         </TableRowColumn>
@@ -40,7 +35,7 @@ class Sound extends Component {
           )}
         </TableRowColumn>
         <TableRowColumn style={{width: '70px'}}>
-          <a href={'https://vk.com/search?' + 'c%5Bq%5D=' + encodeURIComponent(this.props.sound.title) + '&c%5Bsection%5D=auto'} target='_blank'>
+          <a href={"https://vk.com/search?c%5Bq%5D=" + encodeURIComponent(this.props.sound.title) + "&c%5Bsection%5D=auto"} target='_blank'>
             <span>VK</span>
             <FontIcon className="material-icons" style={this.state.iconStyles}>search</FontIcon>
           </a>

@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import DottedColor from "./DottedColor.js";
-
 class Users extends Component {
   render () {
     return (
