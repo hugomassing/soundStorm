@@ -40,7 +40,7 @@ class Sound extends Component {
           )}
         </TableRowColumn>
         <TableRowColumn style={{width: '70px'}}>
-          <a href={'https://vk.com/search?' + encodeURIComponent('c[q]=' + this.props.sound.title + '&c[section]=auto')} target='_blank'>
+          <a href={'https://vk.com/search?' + 'c%5Bq%5D=' + encodeURIComponent(this.props.sound.title) + '&c%5Bsection%5D=auto'} target='_blank'>
             <span>VK</span>
             <FontIcon className="material-icons" style={this.state.iconStyles}>search</FontIcon>
           </a>
