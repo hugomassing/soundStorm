@@ -11,13 +11,13 @@ class Sounds extends Component {
   state = {
     users: [],
     tracks: [],
-    page: 1,
+    page: 0,
     loading : false
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.users.length > 0) {
-      this.loadItems(nextProps.users, 1);
+      this.loadItems(nextProps.users, 0);
       this.setState({
         users: nextProps.users
       })
